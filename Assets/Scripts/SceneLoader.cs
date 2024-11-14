@@ -7,11 +7,13 @@ public class SceneLoader: MonoBehaviour
 
     [SerializeField] SceneField _lightDimensionScene;
     [SerializeField] SceneField _darkDimensionScene;
+    [SerializeField] float _sceneActivationDelay = 1.9f;
 
     public static SceneLoader Instance { get; private set; }
 
-    public event Action<Dimension> OnDimensionLoaded;
     public event Action<Dimension> OnStartDimensionLoad;
+    public event Action<Dimension> OnDimensionReadyToActivate;
+    public event Action<Dimension> OnDimensionLoaded;
 
     #region Setup
     private void Awake()
@@ -21,20 +23,20 @@ public class SceneLoader: MonoBehaviour
     }
     #endregion
 
-    public void LoadDimensionScene(Dimension dimensionToLoad)
+    public void LoadDimensionScene(Dimension dimensionToLoad, bool useSceneLoadDelay = true)
     {
         switch (dimensionToLoad)
         {
             case Dimension.Light:
                 if (SceneIsLoaded(_lightDimensionScene)) return;
                 OnStartDimensionLoad?.Invoke(Dimension.Light);
-                LoadSceneAdditive(_lightDimensionScene, _darkDimensionScene);
+                LoadSceneAdditive(_lightDimensionScene, _darkDimensionScene, useSceneLoadDelay);
                 break;
 
             case Dimension.Dark:
                 if (SceneIsLoaded(_darkDimensionScene)) return;
                 OnStartDimensionLoad?.Invoke(Dimension.Dark);
-                LoadSceneAdditive(_darkDimensionScene, _lightDimensionScene);
+                LoadSceneAdditive(_darkDimensionScene, _lightDimensionScene, useSceneLoadDelay);
                 break;
 
             default:
@@ -43,23 +45,30 @@ public class SceneLoader: MonoBehaviour
         }
     }
 
-    private void LoadSceneAdditive(SceneField sceneToLoad, SceneField sceneToUnload)
+    private void LoadSceneAdditive(SceneField sceneToLoad, SceneField sceneToUnload, bool useSceneLoadDelay = true)
     {
        OnStartDimensionLoad?.Invoke(GetDimensionFromScene(sceneToLoad));
        StartCoroutine(LoadSceneAdditiveCoroutine(sceneToLoad, sceneToUnload));
 
     }
 
-    private IEnumerator LoadSceneAdditiveCoroutine(SceneField sceneToLoad, SceneField sceneToUnload)
+    private IEnumerator LoadSceneAdditiveCoroutine(SceneField sceneToLoad, SceneField sceneToUnload, bool useSceneLoadDelay = true)
     {
         AsyncOperation sceneLoadProgress = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
 
-        while(sceneLoadProgress.isDone == false)
+        if(useSceneLoadDelay == true) sceneLoadProgress.allowSceneActivation = false;
+
+        while(sceneLoadProgress.progress < 0.9f)
         {
             yield return null;
         }
-        OnDimensionLoaded?.Invoke(GetDimensionFromScene(sceneToLoad));
 
+        OnDimensionReadyToActivate?.Invoke(GetDimensionFromScene(sceneToLoad));
+
+        if (useSceneLoadDelay == true) yield return new WaitForSeconds(_sceneActivationDelay);
+
+        sceneLoadProgress.allowSceneActivation = true;
+        OnDimensionLoaded?.Invoke(GetDimensionFromScene(sceneToLoad));
         if(SceneIsLoaded(sceneToUnload)) UnloadScene(sceneToUnload);
     }
 
