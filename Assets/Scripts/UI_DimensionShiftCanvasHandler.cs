@@ -28,6 +28,7 @@ public class UI_DimensionShiftCanvasHandler : MonoBehaviour
 
     #endregion
 
+    #region EventTriggeredFunctions
     private void OnStartDimensionLoad_StartDimensionSwitchAnimation(Dimension dimension)
     {
 
@@ -40,6 +41,8 @@ public class UI_DimensionShiftCanvasHandler : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(HandleTransitionCanvasAnimation(dimension));
     }
+
+    #endregion
 
     private IEnumerator HandleTransitionCanvasAnimation(Dimension _dimensionToSwitchTo)
     {

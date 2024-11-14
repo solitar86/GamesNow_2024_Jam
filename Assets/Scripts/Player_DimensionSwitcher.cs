@@ -30,14 +30,12 @@ public class Player_DimensionSwitcher : MonoBehaviour
     #endregion
     private void StartDimensionSwitchSequence()
     {
-        Debug.Log("Starting Switch Sequence");
         AudioManager.PlaySoundAtPoint(this, _triggerSound, transform.position);
         DimensionManager.Instance.SwitchToOtherDimension();
     }
 
     private void PlaySwitchingAudioAndEffects(Dimension dimension)
     {
-        Debug.Log("Starting Switch Audio and Animation");
         AudioManager.PlaySoundAtPoint(this, _switchSound, transform.position);
         float delay = _switchSound.Clip.length;
         Invoke(nameof(StartReloadSequence), delay);

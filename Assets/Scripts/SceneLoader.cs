@@ -68,8 +68,8 @@ public class SceneLoader: MonoBehaviour
         if (useSceneLoadDelay == true) yield return new WaitForSeconds(_sceneActivationDelay);
 
         sceneLoadProgress.allowSceneActivation = true;
-        OnDimensionLoaded?.Invoke(GetDimensionFromScene(sceneToLoad));
         if(SceneIsLoaded(sceneToUnload)) UnloadScene(sceneToUnload);
+        OnDimensionLoaded?.Invoke(GetDimensionFromScene(sceneToLoad));
     }
 
     private Dimension GetDimensionFromScene(SceneField scene)
