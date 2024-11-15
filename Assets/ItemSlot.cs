@@ -15,7 +15,8 @@ public class ItemSlot : MonoBehaviour, Iinteractable
         if (playerHand.CurrenItemInHand.GetItemDataSO() == _keyItem)
         {
             // Player inserted keyitem;
-            playerHand.PlaceItemInKeyItemPosition(_keyItemPosition.position, OnItemPlacedCallBack);
+            playerHand.CurrenItemInHand.FreezeItem();
+            playerHand.PlaceItemInKeyItemPosition(_keyItemPosition, OnItemPlacedCallBack);
         }
         else if(playerHand.CurrenItemInHand != _keyItem)
         {
