@@ -43,10 +43,10 @@ public class PlayerItemPickUpHandler : MonoBehaviour
         }
     }
 
-    public void PlaceItemInKeyItemPosition(Vector3 positionToPlace, Action callback)
+    public void PlaceItemInKeyItemPosition(Transform keyItemSlotTransform, Action callback)
     {
         PersistantObjects.Instance.SwitchObjectToActiveDimensionScene(_currentItemInHand);
-        _currentItemInHand.PlaceOnKeyItemPosition(positionToPlace, callback);
+        _currentItemInHand.PlaceOnKeyItemPosition(keyItemSlotTransform, callback);
         _currentItemInHand.GetItemDataSO().SetIsHeldByPlayer(false);
         _currentItemInHand = null;
     }

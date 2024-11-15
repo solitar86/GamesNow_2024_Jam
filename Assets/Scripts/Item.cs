@@ -12,7 +12,10 @@ public class Item: MonoBehaviour
     Collider _collider;
 
     [SerializeField] ItemDataSO _itemData;
-    private bool _isFrozen = false;
+    private static float _moveDuration = 0.2f;
+    public bool IsFrozen { get { return _isFrozen; } }
+    private bool _isFrozen;
+   
 
     private void Awake()
     {
@@ -57,17 +60,17 @@ public class Item: MonoBehaviour
         gameObject.SetActive(true);
         transform.SetParent(null, true);
         Vector3 point = interactor.GetInteractionPosition();
-        StartCoroutine(PlaceItemOnPoint(point));
+        StartCoroutine(PlaceItemOnPoint(point, _moveDuration, Quaternion.identity));
         UpdateItemData(point);
     }
 
-    public void PlaceOnKeyItemPosition(Vector3 position, Action callback)
+    public void PlaceOnKeyItemPosition(Transform keyItemTransform, Action callback)
     {
         StopAllCoroutines();
         gameObject.SetActive(true);
         transform.SetParent(null, true);
-        StartCoroutine(PlaceItemOnPoint(position, callback));
-        UpdateItemData(position);
+        StartCoroutine(PlaceItemOnPoint(keyItemTransform.position, _moveDuration * 10, keyItemTransform.rotation, true, callback));
+        UpdateItemData(keyItemTransform.position);
 
     }
 
@@ -79,7 +82,7 @@ public class Item: MonoBehaviour
     private IEnumerator PickUpItem(Transform player)
     {
         float elapsedTime = 0f;
-        float duration = 0.8f;
+        float duration = _moveDuration;
         float percentComplete;
         Vector3 startPosition = transform.position;
 
@@ -93,19 +96,28 @@ public class Item: MonoBehaviour
 
         gameObject.SetActive(false);
     }
-    private IEnumerator PlaceItemOnPoint(Vector3 point, Action OnCompleteCallback = null)
+    private IEnumerator PlaceItemOnPoint(Vector3 point, float moveDuration, Quaternion rotation, bool includeRotation = false, Action OnCompleteCallback = null)
     {
         float elapsedTime = 0f;
-        float duration = 0.8f;
         _collider.enabled = true;
         Vector3 startPosition = transform.position;
         float percentComplete;
+        float lerpValue;
 
-        while (elapsedTime < duration)
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = rotation;
+
+        while (elapsedTime < moveDuration)
         {
             elapsedTime += Time.deltaTime;
-            percentComplete = elapsedTime / duration;
-            transform.position = Vector3.Lerp(startPosition, point, percentComplete);
+            percentComplete = elapsedTime / moveDuration;
+            lerpValue = PersistantObjects.Instance.EvaluateSlowEndCurve(percentComplete);
+            transform.position = Vector3.Lerp(startPosition, point, lerpValue);
+
+            if(includeRotation )
+            {
+                transform.rotation = Quaternion.Slerp(startRotation, targetRotation, lerpValue);
+            }
             yield return null;
         }
 
@@ -144,5 +156,10 @@ public class Item: MonoBehaviour
     public void SavePosition()
     {
         _itemData.Position = transform.position;
+    }
+
+    public void FreezeItem()
+    {
+        _isFrozen = true;
     }
 }

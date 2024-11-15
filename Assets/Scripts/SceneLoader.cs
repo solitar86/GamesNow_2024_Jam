@@ -7,7 +7,7 @@ public class SceneLoader: MonoBehaviour
 
     [SerializeField] SceneField _lightDimensionScene;
     [SerializeField] SceneField _darkDimensionScene;
-    [SerializeField] float _sceneActivationDelay = 1.9f;
+    [SerializeField] float _sceneActivationDelay = 2.5f;
 
     public static SceneLoader Instance { get; private set; }
 
@@ -105,5 +105,10 @@ public class SceneLoader: MonoBehaviour
     private bool SceneIsLoaded(SceneField sceneToCheck)
     {
         return SceneManager.GetSceneByName(sceneToCheck.SceneName).isLoaded;
+    }
+
+    public void LoadLightDimensionInstant()
+    {
+        SceneManager.LoadScene(_lightDimensionScene, LoadSceneMode.Additive);
     }
 }

@@ -8,6 +8,7 @@ public class PersistantObjects : MonoBehaviour
     public static PersistantObjects Instance;
     [SerializeField] SceneField _bootstrapScene;
     [SerializeField] GameObject[] _allItems;
+    [SerializeField] AnimationCurve _slowEndCurve;
 
     private Dictionary<Item, ItemDataSO> currentItemsDictionary = new Dictionary<Item, ItemDataSO>();
     private List<ItemDataSO> _interDimensionalItems = new();
@@ -157,6 +158,11 @@ public class PersistantObjects : MonoBehaviour
         }
         item.SetPosition();
 
+    }
+
+    public float EvaluateSlowEndCurve(float value)
+    {
+        return _slowEndCurve.Evaluate(value);
     }
 
     private GameObject GetItemFromAllItemsWithObjectData(ItemDataSO itemdata)

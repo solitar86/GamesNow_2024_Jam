@@ -18,7 +18,7 @@ public class DimensionManager : MonoBehaviour
     private void Start()
     {
         // Load initial Dimension
-        SwitchDimensionTo(Dimension.Light);
+        LoadFirstDimensionSceneOnGameStart();
     }
 
     #endregion
@@ -44,6 +44,12 @@ public class DimensionManager : MonoBehaviour
     {
         CurrentDimension = CurrentDimension == Dimension.Light ?  Dimension.Dark : Dimension.Light;
         SwitchDimensionTo(CurrentDimension);
+    }
+
+    public void LoadFirstDimensionSceneOnGameStart()
+    {
+        CurrentDimension = Dimension.Light;
+        SceneLoader.Instance.LoadLightDimensionInstant();
     }
 }
 

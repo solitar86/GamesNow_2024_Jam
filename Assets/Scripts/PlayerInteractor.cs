@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
@@ -61,8 +62,11 @@ public class PlayerInteractor : MonoBehaviour
         }
         if (hitInfo.collider.TryGetComponent<Item>(out Item item))
         {
-            SelectThisItem(item);
-            return;
+            if(item.IsFrozen == false)
+            {
+                SelectThisItem(item);
+                return;
+            }
         }
         else
         {

@@ -10,15 +10,17 @@ public class Player_DimensionSwitcher : MonoBehaviour
     [SerializeField] Sound _triggerSound;
     [SerializeField] Sound _switchSound;
     [SerializeField] Sound _reloadSound;
+    [Space(15)]
+    [SerializeField] Sound _heavyBreathSound;
 
     public UnityEvent OnStartSceneSwitch;
     public UnityEvent OnFinishSceneSwitch;
 
+    private bool _wasEmergencySwitch = false;
+
     private float _emergencyTimer;
     private bool _hasReachedEmergencyDuration = false;
     public float EmergencyTimerNormalized { get { return _emergencyTimer / _emergencyDuration; } }
-
-
     public bool CanSwitchDimensions { get { return _canSwitchDimensions; } }
 
     private void Start()
@@ -42,6 +44,7 @@ public class Player_DimensionSwitcher : MonoBehaviour
                 _emergencyTimer = _emergencyDuration;
                 _hasReachedEmergencyDuration = true;
                 _canSwitchDimensions = false;
+                _wasEmergencySwitch = true;
                 StartDimensionSwitchSequence();
             }
         }
@@ -51,6 +54,7 @@ public class Player_DimensionSwitcher : MonoBehaviour
         {
             _canSwitchDimensions = false;
             StartDimensionSwitchSequence();
+
         }
 
         Debug.Log(_emergencyTimer + "\n " + EmergencyTimerNormalized);
@@ -70,13 +74,19 @@ public class Player_DimensionSwitcher : MonoBehaviour
         AudioManager.PlaySoundAtPoint(this, _switchSound, transform.position);
         float delay = _switchSound.Clip.length;
         Invoke(nameof(StartReloadSequence), delay);
+
+        if(_wasEmergencySwitch)
+        {
+            AudioManager.PlaySoundAtPoint(this, _heavyBreathSound, transform.position);
+            _wasEmergencySwitch = false;
+        }
     }
 
     private void StartReloadSequence()
     {
         AudioManager.PlaySoundAtPoint(this, _reloadSound, transform.position);
         float delay = _reloadSound.Clip.length;
-        Invoke(nameof(AllowDimensionSwitch), delay);
+        Invoke(nameof(AllowDimensionSwitch), delay - 1.4f);
         OnFinishSceneSwitch.Invoke();
 
     }
