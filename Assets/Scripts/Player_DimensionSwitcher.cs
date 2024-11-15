@@ -1,10 +1,12 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Player_DimensionSwitcher : MonoBehaviour
 {
     [SerializeField] float _emergencyDuration = 30f;
+    [SerializeField] float _suitChargeDuration = 3.6f;
     [SerializeField] KeyCode _keyToSwitchDimension;
     private bool _canSwitchDimensions = true;
     [SerializeField] Sound _triggerSound;
@@ -20,12 +22,16 @@ public class Player_DimensionSwitcher : MonoBehaviour
 
     private float _emergencyTimer;
     private bool _hasReachedEmergencyDuration = false;
-    public float EmergencyTimerNormalized { get { return _emergencyTimer / _emergencyDuration; } }
+    public float EmergencyTimerNormalized { get { return 1f-(_emergencyTimer / _emergencyDuration); } }
+
+    private float _suitChargeLevelForUi = 1f;
+    public float SuitChargeLevelNormalized { get { return _suitChargeLevelForUi; } }
     public bool CanSwitchDimensions { get { return _canSwitchDimensions; } }
 
     private void Start()
     {
         SceneLoader.Instance.OnDimensionReadyToActivate += PlaySwitchingAudioAndEffects;
+
     }
 
     #region Update
@@ -33,7 +39,8 @@ public class Player_DimensionSwitcher : MonoBehaviour
     {
         if(DimensionManager.Instance.CurrentDimension == Dimension.Light)
         {
-            _emergencyTimer = 0;
+            _emergencyTimer -= Time.deltaTime;
+            if(_emergencyTimer < 0) _emergencyTimer = 0;
             _hasReachedEmergencyDuration = false;
         }
         else if (DimensionManager.Instance.CurrentDimension == Dimension.Dark) 
@@ -57,8 +64,6 @@ public class Player_DimensionSwitcher : MonoBehaviour
 
         }
 
-        Debug.Log(_emergencyTimer + "\n " + EmergencyTimerNormalized);
-
     }
 
     #endregion
@@ -67,6 +72,7 @@ public class Player_DimensionSwitcher : MonoBehaviour
         AudioManager.PlaySoundAtPoint(this, _triggerSound, transform.position);
         DimensionManager.Instance.SwitchToOtherDimension();
         OnStartSceneSwitch.Invoke();
+        _suitChargeLevelForUi = 0f;
     }
 
     private void PlaySwitchingAudioAndEffects(Dimension dimension)
@@ -88,7 +94,24 @@ public class Player_DimensionSwitcher : MonoBehaviour
         float delay = _reloadSound.Clip.length;
         Invoke(nameof(AllowDimensionSwitch), delay - 1.4f);
         OnFinishSceneSwitch.Invoke();
+        StartCoroutine(ChargeMeterLoadNumberNormalized());
 
+    }
+
+
+    private IEnumerator ChargeMeterLoadNumberNormalized()
+    {
+        float elapsedTime = 0f;
+        float percentComplete;
+        while (_suitChargeDuration > elapsedTime)
+        {
+            elapsedTime += Time.deltaTime;
+            percentComplete = elapsedTime / _suitChargeDuration;
+            _suitChargeLevelForUi = percentComplete;
+            yield return null;
+        }
+
+        _suitChargeLevelForUi = 1f;
     }
 
     private void AllowDimensionSwitch()
