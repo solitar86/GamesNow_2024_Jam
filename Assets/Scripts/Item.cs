@@ -68,7 +68,6 @@ public class Item: MonoBehaviour
         transform.SetParent(null, true);
         StartCoroutine(PlaceItemOnPoint(position, callback));
         UpdateItemData(position);
-        _isFrozen = true;
 
     }
 
