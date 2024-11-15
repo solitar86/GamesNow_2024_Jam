@@ -18,7 +18,9 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] Transform _debugSphere;
 
     [SerializeField, ReadOnly(true)] Item _selectedItem;
+    [SerializeField, ReadOnly(true)] Iinteractable _selectedInteractable;
     public Item SelectedItem { get { return _selectedItem; } }
+    public Iinteractable Interactable { get { return _selectedInteractable;} }
 
     private void Awake()
     {
@@ -43,9 +45,9 @@ public class PlayerInteractor : MonoBehaviour
         {
             _debugSphere.gameObject.SetActive(false);
         }
-        HandleItemSelection(hitInfo);
         Debug.DrawRay(mainCamera.transform.position, _interactionRay.GetPoint(_interactionDistance), Color.red, 0.001f);
 #endif
+        HandleItemSelection(hitInfo);
     }
 
     private void HandleItemSelection(RaycastHit hitInfo)
@@ -54,15 +56,22 @@ public class PlayerInteractor : MonoBehaviour
         {
             // We didn't hit anything
             DeselectCurrentItem();
+            _selectedInteractable = null;
             return;
         }
         if (hitInfo.collider.TryGetComponent<Item>(out Item item))
         {
             SelectThisItem(item);
+            return;
         }
         else
         {
             DeselectCurrentItem();
+        }
+
+        if(hitInfo.collider.TryGetComponent<Iinteractable>(out Iinteractable interactable))
+        {
+            _selectedInteractable = interactable;
         }
     }
 
@@ -92,6 +101,12 @@ public class PlayerInteractor : MonoBehaviour
     public bool CanPickUpItem()
     {
        return SelectedItem != null;
+    }
+
+    public void DisAbleSelecting()
+    {
+        DeselectCurrentItem();
+        this.enabled = false;
     }
 
     public void DeselectItem(Item itemBeingPickedUp)

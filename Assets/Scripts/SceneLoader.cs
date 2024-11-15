@@ -14,6 +14,7 @@ public class SceneLoader: MonoBehaviour
     public event Action<Dimension> OnStartDimensionLoad;
     public event Action<Dimension> OnDimensionReadyToActivate;
     public event Action<Dimension> OnDimensionLoaded;
+    public event Action<Dimension> OnSceneIsActivated;
 
     #region Setup
     private void Awake()
@@ -70,15 +71,30 @@ public class SceneLoader: MonoBehaviour
         sceneLoadProgress.allowSceneActivation = true;
         if(SceneIsLoaded(sceneToUnload)) UnloadScene(sceneToUnload);
         OnDimensionLoaded?.Invoke(GetDimensionFromScene(sceneToLoad));
+
+        yield return new WaitForSeconds(0.1f);
+
+        OnSceneIsActivated?.Invoke(GetDimensionFromScene(sceneToLoad));
+
     }
 
-    private Dimension GetDimensionFromScene(SceneField scene)
+    public Dimension GetDimensionFromScene(SceneField scene)
     {
         if(scene == _lightDimensionScene) return Dimension.Light;
         if(scene == _darkDimensionScene) return Dimension.Dark;
 
         Debug.Log("<color=#FF0000> Invalid Dimension From Scene. Returning Dimension.Light </color>");
         return Dimension.Light;
+    }
+
+    public Scene GetCurrentDimensionScene()
+    {
+        if(DimensionManager.Instance.CurrentDimension == Dimension.Light)
+        {
+            return SceneManager.GetSceneByName(_lightDimensionScene);
+        }
+
+        return SceneManager.GetSceneByName(_darkDimensionScene);
     }
 
     private void UnloadScene(SceneField sceneToUnload)

@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using UnityEngine;
 
 public class PlayerItemPickUpHandler : MonoBehaviour
@@ -5,27 +7,47 @@ public class PlayerItemPickUpHandler : MonoBehaviour
     [SerializeField] private KeyCode _itemPickUpKey;
     [SerializeField] private PlayerInteractor _interactor;
 
-    private Item _currentItem;
+    private Item _currentItemInHand;
+    public Item CurrenItemInHand { get { return _currentItemInHand; } }
     private void Start()
     {
-        _interactor = GetComponent<PlayerInteractor>();   
+        _interactor = GetComponent<PlayerInteractor>();
     }
     private void Update()
     {
         if(Input.GetKeyDown(_itemPickUpKey))
         {
-            if (_currentItem != null && _interactor.CanPlaceItem() == true)
+            if (_currentItemInHand != null && _interactor.CanPlaceItem() == true)
             {
-                _currentItem.PlaceDown(_interactor);
-                _currentItem = null;
+                // Place Item Down
+                PersistantObjects.Instance.SwitchObjectToActiveDimensionScene(_currentItemInHand);
+                _currentItemInHand.PlaceDownAndUnParent(_interactor);
+                _currentItemInHand.GetItemDataSO().SetIsHeldByPlayer(false);
+                _currentItemInHand = null;
             }
             if(_interactor.SelectedItem != null)
             {
-                _interactor.SelectedItem.PickUp(transform);
-                _currentItem = _interactor.SelectedItem;
-                _interactor.DeselectItem(_currentItem);
+                // Pick Up Item
+                PersistantObjects.Instance.SwitchObjectToBootStrapScene(_interactor.SelectedItem);
+                _interactor.SelectedItem.PickUpAndParentToPlayer(transform);
+                _currentItemInHand = _interactor.SelectedItem;
+                _currentItemInHand.GetItemDataSO().SetIsHeldByPlayer(true);
+                _interactor.DeselectItem(_currentItemInHand); // I don't remember why is this important
+            }
+
+            if(_interactor.Interactable != null)
+            {
+                _interactor.Interactable.Interact(transform);
             }
 
         }
+    }
+
+    public void PlaceItemInKeyItemPosition(Vector3 positionToPlace, Action callback)
+    {
+        PersistantObjects.Instance.SwitchObjectToActiveDimensionScene(_currentItemInHand);
+        _currentItemInHand.PlaceOnKeyItemPosition(positionToPlace, callback);
+        _currentItemInHand.GetItemDataSO().SetIsHeldByPlayer(false);
+        _currentItemInHand = null;
     }
 }

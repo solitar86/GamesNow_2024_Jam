@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player_DimensionSwitcher : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Player_DimensionSwitcher : MonoBehaviour
     [SerializeField] Sound _triggerSound;
     [SerializeField] Sound _switchSound;
     [SerializeField] Sound _reloadSound;
+
+    public UnityEvent OnStartSceneSwitch;
+    public UnityEvent OnFinishSceneSwitch;
 
     public bool CanSwitchDimensions { get { return _canSwitchDimensions; } }
 
@@ -32,6 +36,7 @@ public class Player_DimensionSwitcher : MonoBehaviour
     {
         AudioManager.PlaySoundAtPoint(this, _triggerSound, transform.position);
         DimensionManager.Instance.SwitchToOtherDimension();
+        OnStartSceneSwitch.Invoke();
     }
 
     private void PlaySwitchingAudioAndEffects(Dimension dimension)
@@ -46,6 +51,7 @@ public class Player_DimensionSwitcher : MonoBehaviour
         AudioManager.PlaySoundAtPoint(this, _reloadSound, transform.position);
         float delay = _reloadSound.Clip.length;
         Invoke(nameof(AllowDimensionSwitch), delay);
+        OnFinishSceneSwitch.Invoke();
 
     }
 
