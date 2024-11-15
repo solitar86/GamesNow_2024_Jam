@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class Player_DimensionSwitcher : MonoBehaviour
 {
+    [SerializeField] float _emergencyDuration = 30f;
     [SerializeField] KeyCode _keyToSwitchDimension;
     private bool _canSwitchDimensions = true;
     [SerializeField] Sound _triggerSound;
@@ -12,6 +13,11 @@ public class Player_DimensionSwitcher : MonoBehaviour
 
     public UnityEvent OnStartSceneSwitch;
     public UnityEvent OnFinishSceneSwitch;
+
+    private float _emergencyTimer;
+    private bool _hasReachedEmergencyDuration = false;
+    public float EmergencyTimerNormalized { get { return _emergencyTimer / _emergencyDuration; } }
+
 
     public bool CanSwitchDimensions { get { return _canSwitchDimensions; } }
 
@@ -23,11 +29,31 @@ public class Player_DimensionSwitcher : MonoBehaviour
     #region Update
     private void Update()
     {
+        if(DimensionManager.Instance.CurrentDimension == Dimension.Light)
+        {
+            _emergencyTimer = 0;
+            _hasReachedEmergencyDuration = false;
+        }
+        else if (DimensionManager.Instance.CurrentDimension == Dimension.Dark) 
+        {
+            _emergencyTimer += Time.deltaTime;
+            if(_emergencyTimer > _emergencyDuration && _hasReachedEmergencyDuration == false) 
+            {
+                _emergencyTimer = _emergencyDuration;
+                _hasReachedEmergencyDuration = true;
+                _canSwitchDimensions = false;
+                StartDimensionSwitchSequence();
+            }
+        }
+
+
         if (_canSwitchDimensions == true && Input.GetKeyDown(_keyToSwitchDimension))
         {
             _canSwitchDimensions = false;
             StartDimensionSwitchSequence();
         }
+
+        Debug.Log(_emergencyTimer + "\n " + EmergencyTimerNormalized);
 
     }
 

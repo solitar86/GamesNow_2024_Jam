@@ -28,8 +28,6 @@ public class Audio_DimensionHandler : MonoBehaviour
     {
         PlayDimensionShiftAudio();
     }
-
-
     private void OnDimensionLoaded(Dimension dimension)
     {
         StopAllCoroutines();

@@ -28,6 +28,7 @@ public class ItemSlot : MonoBehaviour, Iinteractable
     {
         OnKeyItemPlaced?.Invoke();
         Debug.Log("Item Placed CallBack Called");
+
     }
 
 
