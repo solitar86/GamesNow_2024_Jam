@@ -340,6 +340,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4467200227924218861, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: _heavyBreathSound.Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 73628b76c9918fc45b2617eea4229b02, type: 3}
+    - target: {fileID: 4467200227924218861, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: _heavyBreathSound.Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467200227924218861, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: _heavyBreathSound.Mixergroup
+      value: 
+      objectReference: {fileID: 8647257718001441787, guid: 0ba5d761435591a439fe68b83d9ddc08, type: 2}
+    - target: {fileID: 4467200227924218861, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
       propertyPath: OnStartSceneSwitch.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
