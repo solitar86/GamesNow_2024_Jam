@@ -1088,7 +1088,7 @@ MonoBehaviour:
   RotationSpeed: 1
   SpeedChangeRate: 10
   JumpHeight: 1.2
-  Gravity: 0
+  Gravity: 15
   JumpTimeout: 0.1
   FallTimeout: 0.15
   Grounded: 1
@@ -1483,7 +1483,9 @@ MonoBehaviour:
   _isReadyImage: {fileID: 3434811317136915402}
   _dimensionSwitcher: {fileID: 4467200227924218861}
   _suitChargeImage: {fileID: 3629513764683429043}
+  _suitChargeBG: {fileID: 7320717410750751130}
   _oxygenMeterImage: {fileID: 2576166288443921284}
+  _notChargedSuitChargeColor: {r: 0.5471698, g: 0, b: 0, a: 1}
 --- !u!1 &8479449587875136616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +1756,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8401684827628381120}
     m_Modifications:
+    - target: {fileID: 5152334783666297, guid: b3b0a666d3ce91e4885477e9a179944a, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152334783666297, guid: b3b0a666d3ce91e4885477e9a179944a, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264579227791572814, guid: b3b0a666d3ce91e4885477e9a179944a, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264579227791572814, guid: b3b0a666d3ce91e4885477e9a179944a, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3774226353505292982, guid: b3b0a666d3ce91e4885477e9a179944a, type: 3}
       propertyPath: m_Name
       value: HUD_Light
@@ -1838,6 +1856,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6328885954249690448, guid: b3b0a666d3ce91e4885477e9a179944a, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328885954249690448, guid: b3b0a666d3ce91e4885477e9a179944a, type: 3}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286629929025177692, guid: b3b0a666d3ce91e4885477e9a179944a, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1857,6 +1887,17 @@ MonoBehaviour:
 --- !u!114 &3629513764683429043 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5152334783666297, guid: b3b0a666d3ce91e4885477e9a179944a, type: 3}
+  m_PrefabInstance: {fileID: 3624502201899281610}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7320717410750751130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6328885954249690448, guid: b3b0a666d3ce91e4885477e9a179944a, type: 3}
   m_PrefabInstance: {fileID: 3624502201899281610}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
