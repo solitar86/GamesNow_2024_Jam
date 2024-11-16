@@ -99,7 +99,6 @@ public class Item: MonoBehaviour
     private IEnumerator PlaceItemOnPoint(Vector3 point, float moveDuration, Quaternion rotation, bool includeRotation = false, Action OnCompleteCallback = null)
     {
         float elapsedTime = 0f;
-        _collider.enabled = true;
         Vector3 startPosition = transform.position;
         float percentComplete;
         float lerpValue;
@@ -122,6 +121,7 @@ public class Item: MonoBehaviour
         }
 
         transform.position = point;
+        _collider.enabled = true;
 
         OnCompleteCallback?.Invoke();
 

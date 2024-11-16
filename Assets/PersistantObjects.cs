@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,9 +14,12 @@ public class PersistantObjects : MonoBehaviour
     private Dictionary<Item, ItemDataSO> currentItemsDictionary = new Dictionary<Item, ItemDataSO>();
     private List<ItemDataSO> _interDimensionalItems = new();
 
+    [SerializeField, ReadOnly] ItemDataSO[] _allItemDataSO;
+
     private void Awake()
     {
         _allItems = Resources.LoadAll<GameObject>("Items");
+        _allItemDataSO = Resources.LoadAll<ItemDataSO>("ItemData");
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
