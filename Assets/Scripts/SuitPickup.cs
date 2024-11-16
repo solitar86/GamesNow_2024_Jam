@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class SuitPickup : MonoBehaviour
 {
     Collider trigger;
-    public UnityEvent _tookSuit;
+
     void Start()
     {
        trigger = gameObject.GetComponent<Collider>(); 
@@ -13,7 +13,8 @@ public class SuitPickup : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.GetComponentInParent<CharacterController>() != null)
         {
-            _tookSuit.Invoke();
+            other.GetComponentInChildren<Player_DimensionSwitcher>().EquippedSuit();
+            other.GetComponentInParent<UI_PlayerInGameUI>().EnableHUD();
             gameObject.SetActive(false);
         }
     }

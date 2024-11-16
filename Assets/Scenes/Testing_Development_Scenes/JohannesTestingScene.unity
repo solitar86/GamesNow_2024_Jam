@@ -526,6 +526,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1444285948}
+        m_TargetAssemblyTypeName: Player_DimensionSwitcher, Assembly-CSharp
+        m_MethodName: EquippedSuit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!43 &194877988
 Mesh:
   m_ObjectHideFlags: 0
@@ -3214,6 +3226,17 @@ Transform:
   - {fileID: 2127173972}
   m_Father: {fileID: 196572935}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1444285948 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4467200227924218861, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+  m_PrefabInstance: {fileID: 1633864333013592648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fd94a774d040c4fab8644167824587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1448430844
 Mesh:
   m_ObjectHideFlags: 0
@@ -5124,6 +5147,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 444852868584455804, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467200227924218861, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: _suitOn
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4714957186640785997, guid: 8e486826c7aff6a48abe732e20519015, type: 3}

@@ -14,7 +14,7 @@ public class Player_DimensionSwitcher : MonoBehaviour
     [SerializeField] Sound _reloadSound;
     [Space(15)]
     [SerializeField] Sound _heavyBreathSound;
-
+    public bool _suitOn = true;
     public UnityEvent OnStartSceneSwitch;
     public UnityEvent OnFinishSceneSwitch;
 
@@ -31,9 +31,15 @@ public class Player_DimensionSwitcher : MonoBehaviour
     private void Start()
     {
         SceneLoader.Instance.OnDimensionReadyToActivate += PlaySwitchingAudioAndEffects;
-
+        if (!_suitOn)
+        {
+            _canSwitchDimensions = false;
+        }
     }
-
+    public void EquippedSuit() {
+        _suitOn = true;
+        //play equip sound etc.
+    }
     #region Update
     private void Update()
     {
