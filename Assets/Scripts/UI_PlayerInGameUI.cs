@@ -12,7 +12,7 @@ public class UI_PlayerInGameUI : MonoBehaviour
 
     private  Color _normalSuitChargeColor;
     [SerializeField] private Color _notChargedSuitChargeColor;
-     
+    public GameObject HUD; 
 
     private void Awake()
     {
@@ -25,5 +25,9 @@ public class UI_PlayerInGameUI : MonoBehaviour
         _suitChargeImage.fillAmount = _dimensionSwitcher.SuitChargeLevelNormalized;
 
         _suitChargeBG.color = _suitChargeImage.fillAmount > 0.99f ? _normalSuitChargeColor : _notChargedSuitChargeColor;
+    }
+
+    public void EnableHUD() {
+        HUD.SetActive(true);
     }
 }

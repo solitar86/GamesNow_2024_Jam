@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SuitPickup : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    Collider trigger;
+    public UnityEvent _tookSuit;
     void Start()
     {
-        
+       trigger = gameObject.GetComponent<Collider>(); 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnTriggerEnter(Collider other) {
+        if (other.GetComponentInParent<CharacterController>() != null)
+        {
+            _tookSuit.Invoke();
+            gameObject.SetActive(false);
+        }
     }
 }
