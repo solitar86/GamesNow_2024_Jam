@@ -317,6 +317,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3903753991419114206, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714957186640785997, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: Gravity
+      value: -15
+      objectReference: {fileID: 0}
     - target: {fileID: 5981421385838072269, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1437,6 +1445,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _allItemDataSO: []
 --- !u!4 &1975670772
 Transform:
   m_ObjectHideFlags: 0
