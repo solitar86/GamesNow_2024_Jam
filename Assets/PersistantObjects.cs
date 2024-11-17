@@ -217,12 +217,14 @@ public class PersistantObjects : MonoBehaviour
         public static void ResetGameState()
         {
             HasSuit = false;
+            PowerOnline = false;
         }
 
         // DOES THE PLAYER HAVE THE SUIT.
         public static bool HasSuit { get; private set; }
         public static bool PowerOnline { get; private set; }
-        
+       
+
         public static void SetPlayerHasSuit(bool hasSuit)
         {
             HasSuit = hasSuit;
