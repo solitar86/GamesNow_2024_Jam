@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: JumpTutorial
   m_EditorClassIdentifier: 
   dialoqueLine: (Press TAB to jump between dimensions.)
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: 32663f96ffd687f47b895647e9b67317, type: 3}
   _timeToShowOnScreen: 5

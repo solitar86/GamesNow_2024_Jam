@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ReplaceCore
   m_EditorClassIdentifier: 
   dialoqueLine: Please insert new replacement Energy Core.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: 80d20e06788c3154b92abe78e0ed78a0, type: 3}
   _timeToShowOnScreen: 3

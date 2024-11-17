@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: OxygenOffline
   m_EditorClassIdentifier: 
   dialoqueLine: Oxygen and gravity systems offline.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: 9f3e5cb1cf3899841bfcd590cbe27973, type: 3}
   _timeToShowOnScreen: 3

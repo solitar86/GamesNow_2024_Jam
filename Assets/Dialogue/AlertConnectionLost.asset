@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AlertConnectionLost
   m_EditorClassIdentifier: 
   dialoqueLine: Alert! Connection to Station 4B has been lost.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: 66465f2d803545b41b413116c5ca5ec0, type: 3}
   _timeToShowOnScreen: 5
