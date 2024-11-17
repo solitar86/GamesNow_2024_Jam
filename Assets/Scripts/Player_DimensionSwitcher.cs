@@ -46,7 +46,7 @@ public class Player_DimensionSwitcher : MonoBehaviour
     {
         if(DimensionManager.Instance.CurrentDimension == Dimension.Light)
         {
-            _emergencyTimer -= Time.deltaTime;
+            _emergencyTimer -= Time.deltaTime * 3;
             if(_emergencyTimer < 0) _emergencyTimer = 0;
             _hasReachedEmergencyDuration = false;
         }
