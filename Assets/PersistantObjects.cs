@@ -221,9 +221,14 @@ public class PersistantObjects : MonoBehaviour
 
         // DOES THE PLAYER HAVE THE SUIT.
         public static bool HasSuit { get; private set; }
+        public static bool PowerOnline { get; private set; }
+        
         public static void SetPlayerHasSuit(bool hasSuit)
         {
             HasSuit = hasSuit;
+        }
+        public static void SetPowerOnline(bool powerOnline) {
+            PowerOnline = powerOnline;
         }
     }
 }
