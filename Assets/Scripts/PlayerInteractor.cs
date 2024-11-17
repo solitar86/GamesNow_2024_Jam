@@ -22,7 +22,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] Transform _debugSphere;
 
     [Space(15), Header("TEXT POP-UP")]
-    [SerializeField] GameObject _textPopUpCanvas;
+    [SerializeField] GameObject _textPopUp;
     [SerializeField] TextMeshProUGUI _textPopUpText;
 
     [SerializeField, ReadOnly(true)] Item _selectedItem;
@@ -38,45 +38,12 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
-        // Create a PointerEventData object
-        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
-        {
-            position = Input.mousePosition // Set to current mouse position
-        };
-
-        // Store raycast results
-        List<RaycastResult> results = new List<RaycastResult>();
-
-        // Perform a raycast
-        EventSystem.current.RaycastAll(pointerEventData, results);
-
-        // Check what the raycast hit
-        if (results.Count > 0)
-        {
-            Debug.Log("Currently hovering over: " + results[0].gameObject.name);
-        }
-        else
-        {
-            Debug.Log("Not hovering over any UI element.");
-        }
-
         _interactionRay = mainCamera.ScreenPointToRay(_crosshair.position);
         if (Physics.Raycast(_interactionRay, out RaycastHit hitInfo, _interactionDistance, _interactWithLayers))
         {
             HandleItemSelection(hitInfo);
-#if UNITY_EDITOR
-            if (_showDebugSphere)
-            {
-                _debugSphere.gameObject.SetActive(true);
-                _debugSphere.position = hitInfo.point;
-            }
         }
-        else
-        {
-            _debugSphere.gameObject.SetActive(false);
-        }
-        Debug.DrawRay(mainCamera.transform.position, _interactionRay.GetPoint(_interactionDistance), Color.red, 0.001f);
-#endif
+
         HandleItemSelection(hitInfo);
     }
 
@@ -93,6 +60,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             if(item.IsFrozen == false)
             {
+                DeSelectCurrentInteractable();
                 SelectThisItem(item);
                 return;
             }
@@ -104,22 +72,29 @@ public class PlayerInteractor : MonoBehaviour
 
         if(hitInfo.collider.TryGetComponent<Iinteractable>(out Iinteractable interactable))
         {
+            DeSelectCurrentInteractable();
             SelectInteractable(interactable);
         }
+        else
+        {
+            DeselectCurrentItem();
+            DeSelectCurrentInteractable();
+        }
+
     }
 
     private void SelectInteractable(Iinteractable interactable)
     {
         DeSelectCurrentInteractable();
         _selectedInteractable = interactable;
-        _textPopUpCanvas.SetActive(true);
+        _textPopUp.SetActive(true);
         _textPopUpText.SetText("Interact\n(E)");
     }
 
     private void DeSelectCurrentInteractable()
     {
         _selectedInteractable = null;
-        _textPopUpCanvas.SetActive(false);
+        _textPopUp.SetActive(false);
     }
 
     private void SelectThisItem(Item item)

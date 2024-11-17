@@ -61,7 +61,10 @@ public class Computer_Password : MonoBehaviour, Iinteractable
         _computerCanvas.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        _playerTransform.gameObject.SetActive(true);
-        _playerTransform.GetComponentInChildren<FirstPersonController>().enabled = true;
+        if(_playerTransform != null) 
+        {
+            _playerTransform?.gameObject.SetActive(true);
+            _playerTransform.GetComponentInChildren<FirstPersonController>().enabled = true;
+        }
     }
 }

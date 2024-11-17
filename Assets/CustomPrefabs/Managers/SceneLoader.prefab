@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lightDimensionScene:
-    m_SceneAsset: {fileID: 102900000, guid: 633d55677ab99a344909b121742ffa8c, type: 3}
-    m_SceneName: Johannes_LevelBuilding_A backup
+    m_SceneAsset: {fileID: 102900000, guid: b037f53108dcd444b9bcc4873827b65f, type: 3}
+    m_SceneName: Iiro_SceneChangeTest_Light
   _darkDimensionScene:
-    m_SceneAsset: {fileID: 102900000, guid: 45a7d560499248a4f865b42fe806362b, type: 3}
-    m_SceneName: Johannes_LevelBuilding_B
+    m_SceneAsset: {fileID: 102900000, guid: 724e4b4415d94d44cb6060e11c823704, type: 3}
+    m_SceneName: Iiro_SceneChangeTest_Dark_
   _sceneActivationDelay: 2.5
