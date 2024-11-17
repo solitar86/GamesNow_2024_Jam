@@ -37,7 +37,7 @@ public class ComputerPower : MonoBehaviour
     }
 
     public void LoggedIn() {
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(6);
     }
 
 }
