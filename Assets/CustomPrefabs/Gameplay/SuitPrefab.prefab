@@ -112,33 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecd0476c63156a4d941101501aec19a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tookSuit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI_PlayerInGameUI, Assembly-CSharp
-        m_MethodName: EnableHUD
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Player_DimensionSwitcher, Assembly-CSharp
-        m_MethodName: EquippedSuit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _suitPickUpSound:
+    Clip: {fileID: 8300000, guid: 122387b36dfe27540912d9a008ed066d, type: 3}
+    Mixergroup: {fileID: 0}
+    Volume: 0.4
+    Pitch: 1
+    spacialBlend: 0
 --- !u!136 &3595592187139624839
 CapsuleCollider:
   m_ObjectHideFlags: 0
