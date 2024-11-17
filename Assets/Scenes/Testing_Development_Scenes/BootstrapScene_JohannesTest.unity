@@ -574,6 +574,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PersistantItemManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2646971649513335754, guid: 7fccca0d06f128e42bb03a3b096d3e4b, type: 3}
+      propertyPath: _bootstrapScene.m_SceneName
+      value: BootstrapScene_JohannesTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646971649513335754, guid: 7fccca0d06f128e42bb03a3b096d3e4b, type: 3}
+      propertyPath: _bootstrapScene.m_SceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: ea9a0f3467751c04b910a5b29ca05f9a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
