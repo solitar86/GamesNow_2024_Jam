@@ -17,8 +17,8 @@ public class AudioSettings : MonoBehaviour
     private void Awake()
     {
         _masterVolumeSlider.onValueChanged.AddListener((delegate { SetMasterVolume(_masterVolumeSlider.value); }));
-        _musicVolumeSlider.onValueChanged.AddListener((delegate { SetMusicVolume(_musicVolumeSlider.value); }));
-        _sfxVolumeSlider.onValueChanged.AddListener((delegate { SetSFXVolume(_sfxVolumeSlider.value); }));
+        //_musicVolumeSlider.onValueChanged.AddListener((delegate { SetMusicVolume(_musicVolumeSlider.value); }));
+        //_sfxVolumeSlider.onValueChanged.AddListener((delegate { SetSFXVolume(_sfxVolumeSlider.value); }));
 
     }
     void Start()
@@ -33,7 +33,7 @@ public class AudioSettings : MonoBehaviour
         _slidersAreReady = true;
         GetSettingsFromPlayerPrefs();
         _recordVolumeValues = true;
-        _audioPanel.SetActive(false);
+        //_audioPanel.SetActive(false);
     }
   
   public void SetMasterVolume(float decimalVolume)
@@ -80,12 +80,12 @@ public class AudioSettings : MonoBehaviour
     void GetSettingsFromPlayerPrefs()
     {
         SetMasterVolume(PlayerPrefs.GetFloat(MASTERVOLUME, 1f));
-        SetMusicVolume(PlayerPrefs.GetFloat(MUSICVOLUME, 1f));
-        SetSFXVolume(PlayerPrefs.GetFloat(SFXVOLUME, 1f));
+        //SetMusicVolume(PlayerPrefs.GetFloat(MUSICVOLUME, 1f));
+        //SetSFXVolume(PlayerPrefs.GetFloat(SFXVOLUME, 1f));
 
         SetSliderValuesToMatchRecordedValue(PlayerPrefs.GetFloat(MASTERVOLUME, 1), _masterVolumeSlider);
-        SetSliderValuesToMatchRecordedValue(PlayerPrefs.GetFloat(MUSICVOLUME, 1), _musicVolumeSlider);
-        SetSliderValuesToMatchRecordedValue(PlayerPrefs.GetFloat(SFXVOLUME, 1), _sfxVolumeSlider);
+        //SetSliderValuesToMatchRecordedValue(PlayerPrefs.GetFloat(MUSICVOLUME, 1), _musicVolumeSlider);
+        //SetSliderValuesToMatchRecordedValue(PlayerPrefs.GetFloat(SFXVOLUME, 1), _sfxVolumeSlider);
 
 
     }
