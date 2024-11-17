@@ -1757,6 +1757,62 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0.32}
   m_Size: {x: 0.56, y: 0.35, z: 0.64}
   m_FadeFactor: 1
+--- !u!1 &2565697634227940500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7048942417869909698}
+  - component: {fileID: 4734331901467311785}
+  m_Layer: 0
+  m_Name: Hallways (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7048942417869909698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565697634227940500}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.23, y: 0, z: -17.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 190810773276873433}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!167 &4734331901467311785
+AudioReverbZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565697634227940500}
+  m_Enabled: 1
+  m_MinDistance: 6.69
+  m_MaxDistance: 6.69
+  m_ReverbPreset: 3
+  m_Room: -1000
+  m_RoomHF: -454
+  m_DecayTime: 0.4
+  m_DecayHFRatio: 0.83
+  m_Reflections: -1646
+  m_ReflectionsDelay: 0.002
+  m_Reverb: 53
+  m_ReverbDelay: 0.003
+  m_HFReference: 5000
+  m_Diffusion: 100
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0
 --- !u!1 &2834777334813156746
 GameObject:
   m_ObjectHideFlags: 0
@@ -7174,7 +7230,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3529057511903161406, guid: 54ee5c51b406b424ea4253a3a4d4b05c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7048942417869909698}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7095528629459622169, guid: 54ee5c51b406b424ea4253a3a4d4b05c, type: 3}
       insertIndex: -1
