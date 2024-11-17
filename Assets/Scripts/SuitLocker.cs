@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,31 +8,62 @@ public class SuitLocker : MonoBehaviour, Iinteractable
 {
     [SerializeField] private float openAmount;
     private Vector3 closedPos;
+    private Vector3 openPos;
     //[SerializeField] private AnimationCurve curve;
-    //[SerializeField] private float transitionDuration;
-    public bool opening = false;
-    public bool used = false;
+    [SerializeField] private float transitionDuration = 2f;
     float openYPos;
-    //float lerp = 0;
     Collider glassCollider;
+    AudioSource _openAudioSource;
 
     public void Awake() {
-        //curve = curve.length == 0 ? null : curve;
+
         closedPos = transform.position;
         openYPos = closedPos.y - openAmount;
+        openPos = new Vector3(closedPos.x, openYPos, closedPos.z);
         glassCollider = GetComponent<Collider>();
+        _openAudioSource = GetComponent<AudioSource>();
+
+        if(PersistantObjects.GameState.HasSuit == true)
+        {
+            transform.position = closedPos;
+            glassCollider.enabled = false;
+            return;
+        }
     }
 
-// jos on aikaa, tehd‰‰n smoothimpi avautuminen
+    void Iinteractable.Interact(Transform playerTransform)
+    {
 
-    void Iinteractable.Interact(Transform playerTransform) {
-        if(!used)
+        if(PersistantObjects.GameState.HasSuit == false)
         {
-            glassCollider.enabled = false;
-            transform.position = new Vector3(closedPos.x, openYPos, closedPos.z);
-            used = true;
+            StartCoroutine(GlassOpenSequence());
         }
-        
-       
+        else
+        {
+            AudioManager.PlayErrorBeep(transform);
+        }
+    }
+
+    private IEnumerator GlassOpenSequence()
+    {
+
+        float elapsedTime = 0f;
+        Vector3 startPosition = closedPos;
+        Vector3 targetPosition = openPos;
+        float percentComplete;
+        float lerpValue;
+        _openAudioSource.Play();
+
+        while (elapsedTime < transitionDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            percentComplete = elapsedTime / transitionDuration;
+            lerpValue = PersistantObjects.Instance.EvaluateSlowEndCurve(percentComplete);
+            transform.position = Vector3.Lerp(startPosition, targetPosition, lerpValue);
+            yield return null;
+        }
+
+        transform.position = targetPosition;
+        glassCollider.enabled = false;
     }
 }

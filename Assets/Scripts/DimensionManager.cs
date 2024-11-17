@@ -49,7 +49,10 @@ public class DimensionManager : MonoBehaviour
     public void LoadFirstDimensionSceneOnGameStart()
     {
         CurrentDimension = Dimension.Light;
-        SceneLoader.Instance.LoadLightDimensionInstant();
+        if (SceneLoader.Instance.IsDimensionSceneLoaded(CurrentDimension) == false)
+        {
+            SceneLoader.Instance.LoadLightDimensionInstant();
+        }
     }
 }
 

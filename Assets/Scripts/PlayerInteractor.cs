@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerInteractor : MonoBehaviour
 {
@@ -18,6 +21,10 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] bool _showDebugSphere;
     [SerializeField] Transform _debugSphere;
 
+    [Space(15), Header("TEXT POP-UP")]
+    [SerializeField] GameObject _textPopUpCanvas;
+    [SerializeField] TextMeshProUGUI _textPopUpText;
+
     [SerializeField, ReadOnly(true)] Item _selectedItem;
     [SerializeField, ReadOnly(true)] Iinteractable _selectedInteractable;
     public Item SelectedItem { get { return _selectedItem; } }
@@ -31,6 +38,28 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
+        // Create a PointerEventData object
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition // Set to current mouse position
+        };
+
+        // Store raycast results
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        // Perform a raycast
+        EventSystem.current.RaycastAll(pointerEventData, results);
+
+        // Check what the raycast hit
+        if (results.Count > 0)
+        {
+            Debug.Log("Currently hovering over: " + results[0].gameObject.name);
+        }
+        else
+        {
+            Debug.Log("Not hovering over any UI element.");
+        }
+
         _interactionRay = mainCamera.ScreenPointToRay(_crosshair.position);
         if (Physics.Raycast(_interactionRay, out RaycastHit hitInfo, _interactionDistance, _interactWithLayers))
         {
@@ -57,7 +86,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             // We didn't hit anything
             DeselectCurrentItem();
-            _selectedInteractable = null;
+            DeSelectCurrentInteractable();
             return;
         }
         if (hitInfo.collider.TryGetComponent<Item>(out Item item))
@@ -75,8 +104,22 @@ public class PlayerInteractor : MonoBehaviour
 
         if(hitInfo.collider.TryGetComponent<Iinteractable>(out Iinteractable interactable))
         {
-            _selectedInteractable = interactable;
+            SelectInteractable(interactable);
         }
+    }
+
+    private void SelectInteractable(Iinteractable interactable)
+    {
+        DeSelectCurrentInteractable();
+        _selectedInteractable = interactable;
+        _textPopUpCanvas.SetActive(true);
+        _textPopUpText.SetText("Interact\n(E)");
+    }
+
+    private void DeSelectCurrentInteractable()
+    {
+        _selectedInteractable = null;
+        _textPopUpCanvas.SetActive(false);
     }
 
     private void SelectThisItem(Item item)
