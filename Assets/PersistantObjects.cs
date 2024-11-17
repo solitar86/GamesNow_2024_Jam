@@ -13,6 +13,7 @@ public class PersistantObjects : MonoBehaviour
 
     private Dictionary<Item, ItemDataSO> currentItemsDictionary = new Dictionary<Item, ItemDataSO>();
     private List<ItemDataSO> _interDimensionalItems = new();
+    private List<DialoqueSO> _dialogues = new();
 
     [SerializeField, ReadOnly] ItemDataSO[] _allItemDataSO;
 
@@ -132,7 +133,7 @@ public class PersistantObjects : MonoBehaviour
         ItemDataSO currentItemDataSO = currentItemsDictionary[item];
         if (currentItemDataSO.isDestroyed == true)
         {
-            Debug.Log("Item is destroyed" + item.gameObject.name);
+           // Debug.Log("Item is destroyed" + item.gameObject.name);
             item.gameObject.SetActive(false);
             return;
         }
@@ -145,7 +146,7 @@ public class PersistantObjects : MonoBehaviour
         if (currentItemDataSO.CurrentDimension != DimensionManager.Instance.CurrentDimension)
         {
             // Item should not be active in this dimension
-            Debug.Log(item.gameObject.name + "Does not belong in this dimension: Disabled", item.gameObject);
+            //Debug.Log(item.gameObject.name + "Does not belong in this dimension: Disabled", item.gameObject);
             item.gameObject.SetActive(false);
             return;
         }
@@ -160,7 +161,7 @@ public class PersistantObjects : MonoBehaviour
                 if (_interDimensionalItems.Contains(data) == false)
                 {
                     _interDimensionalItems.Add(data);
-                    Debug.Log("Added " + data.name + " to interdimensional objects");
+                    //Debug.Log("Added " + data.name + " to interdimensional objects");
                 }
             }
         }
@@ -188,11 +189,27 @@ public class PersistantObjects : MonoBehaviour
     public void AddItemToDictionary(Item item)
     {
         currentItemsDictionary.Add(item, item.GetItemDataSO());
-        Debug.Log("Adding to dictionary " + item.gameObject.name);
+        //Debug.Log("Adding to dictionary " + item.gameObject.name);
     }
     public void RemoveItemFromDictionary(Item item)
     {
         currentItemsDictionary.Remove(item);
+    }
+
+    public void RegisterDialoqueTrigger(DialoqueSO dialoqueSO)
+    {
+        if (_dialogues.Contains(dialoqueSO) == false)
+        {
+            _dialogues.Add(dialoqueSO);
+        }
+    }
+
+    public void HandleDuplicateDialoque(DialoqueSO dialoqueSO, GameObject trigger)
+    {
+        if (_dialogues.Contains(dialoqueSO) == true)
+        {
+            trigger.SetActive(false);
+        }
     }
 
     public class GameState

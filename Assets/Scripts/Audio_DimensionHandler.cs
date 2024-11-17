@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Audio_DimensionHandler : MonoBehaviour
 {
-    [SerializeField] private AudioSource _darkDimensionAudioSource, _lightDimensionAudioSource;
+    [SerializeField] private AudioSource _darkDimensionBreathSource, _lightDimensionBreathSource;
     [Space(15)]
     [SerializeField] private AudioSource _playerBreathAudioSource;
     [SerializeField] private float _crossfadeDuration = 0.5f;
@@ -16,7 +16,7 @@ public class Audio_DimensionHandler : MonoBehaviour
         SceneLoader.Instance.OnStartDimensionLoad += OnDimensionLoadStarted;
         SceneLoader.Instance.OnDimensionLoaded += OnDimensionLoaded;
         _darkDimensionAudioVolume = 1f;
-        _lightDimensionAudioVolume  = _lightDimensionAudioSource.volume;
+        _lightDimensionAudioVolume  = _lightDimensionBreathSource.volume;
         _playerBreathVolume = _playerBreathAudioSource.volume;
         _playerBreathAudioSource.loop = true;
 
@@ -34,12 +34,12 @@ public class Audio_DimensionHandler : MonoBehaviour
 
         if (dimension == Dimension.Dark)
         {
-            StartCoroutine(CrossFadeToTargetVolume(_lightDimensionAudioSource, _darkDimensionAudioSource, _darkDimensionAudioVolume));
+            StartCoroutine(CrossFadeToTargetVolume(_lightDimensionBreathSource, _darkDimensionBreathSource, _darkDimensionAudioVolume));
             StartCoroutine(FadeSourceAudioToTargetVolume(_playerBreathAudioSource, _playerBreathVolume));
         }
         else if (dimension == Dimension.Light)
         {
-            StartCoroutine(CrossFadeToTargetVolume(_darkDimensionAudioSource, _lightDimensionAudioSource, _lightDimensionAudioVolume));
+            StartCoroutine(CrossFadeToTargetVolume(_darkDimensionBreathSource, _lightDimensionBreathSource, _lightDimensionAudioVolume));
             StartCoroutine(FadeSourceAudioToTargetVolume(_playerBreathAudioSource, 0f));
         }
     }
