@@ -408,6 +408,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8748325916769382712, guid: 58f04fbea4018c0419e3d973bd1e80ec, type: 3}
+      propertyPath: _lightDimensionScene.m_SceneName
+      value: Iiro_AudioRakennusSkene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748325916769382712, guid: 58f04fbea4018c0419e3d973bd1e80ec, type: 3}
+      propertyPath: _lightDimensionScene.m_SceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: a3d696d75e8682340af07cd8d3698c34, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

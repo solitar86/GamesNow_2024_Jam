@@ -72,10 +72,18 @@ public class DialoqueSystem : MonoBehaviour
             }
             yield return StartCoroutine(TypeOutDialogueText(dialoqueToShow));
 
+            float timeToShowOnScreen;
             //_dialoqueTextField.SetText(dialoqueToShow);
-            float timeToShowOnScreen =
+            if (currentDialogue._dialoqueAudio != null)
+            {
+            timeToShowOnScreen =
                     currentDialogue._timeToShowOnScreen > currentDialogue._dialoqueAudio.length ?
                     currentDialogue._timeToShowOnScreen : currentDialogue._dialoqueAudio.length;
+            }
+            else
+            {
+                timeToShowOnScreen = currentDialogue._timeToShowOnScreen;
+            }
 
             yield return new WaitForSeconds(timeToShowOnScreen);
         }

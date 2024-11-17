@@ -11,6 +11,7 @@ public class DialoqueTrigger : MonoBehaviour
     private void Start()
     {
         PersistantObjects.Instance.HandleDuplicateDialoque(_dialoqueLines[0], gameObject);
+        GetComponent<MeshRenderer>().enabled = false;  
     }
     private void OnTriggerEnter(Collider other)
     {

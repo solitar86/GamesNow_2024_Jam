@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df7b0eb86d8d6b2468fbc914b82fd0f2, type: 3}
-  m_Name: Test_Dialogue
+  m_Name: Sopimaton kommentti
   m_EditorClassIdentifier: 
-  dialoqueLine: This is a line of dialogue;
+  dialoqueLine: "Onpa sulla karvainen selk\xE4!!!!1"
   _dialoqueAudio: {fileID: 8300000, guid: 4ba0fc54d5178b8478bc010e659902c9, type: 3}
   _timeToShowOnScreen: 2
