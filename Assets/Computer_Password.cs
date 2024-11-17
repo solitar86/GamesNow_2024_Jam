@@ -19,13 +19,19 @@ public class Computer_Password : MonoBehaviour, Iinteractable
 
     private Transform _playerTransform;
 
+    private string _previousInputFieldText;
+
+    [SerializeField] private AudioSource _keyboardSource;
+
     private void Awake()
     {
+        _previousInputFieldText = _inputField.text;
         _computerCanvas.enabled = false;
         if (string.IsNullOrEmpty(_correctPassword))
         {
             _correctPassword = "password";
         }
+        if(_keyboardSource == null) _keyboardSource = GetComponent<AudioSource>();
     }
     void Iinteractable.Interact(Transform playerTransform)
     {
@@ -49,6 +55,12 @@ public class Computer_Password : MonoBehaviour, Iinteractable
 
     private void CheckPassword()
     {
+        if(_previousInputFieldText != _inputField.text)
+        {
+            _keyboardSource.Play();
+            _previousInputFieldText = _inputField.text;
+        }
+
         if (_inputField.text.ToLower() == _correctPassword.ToLower())
         {
             ExitMenu();
