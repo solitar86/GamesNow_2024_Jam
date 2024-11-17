@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Test_Dialogue
   m_EditorClassIdentifier: 
   dialoqueLine: This is a line of dialogue;
-  _dialoqueAudio: {fileID: 8300000, guid: db1494357e2bdb04eabf12426491fdf1, type: 3}
-  _timeToShowOnScreen: 10
+  _dialoqueAudio: {fileID: 8300000, guid: 4ba0fc54d5178b8478bc010e659902c9, type: 3}
+  _timeToShowOnScreen: 2

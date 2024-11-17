@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700afc13689a23b438177e2730ee44b4, type: 3}
   m_Name: EnergyCore
   m_EditorClassIdentifier: 
-  ItemName: TikkariJaPipo
-  Position: {x: 0, y: 0, z: 0}
+  ItemName: Energy Core
+  Position: {x: 15.538, y: 0.8851409, z: -2.397}
   CurrentDimension: 0
   isDestroyed: 0
   _startingDimension: 0
