@@ -88,7 +88,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4888580933452853279}
   - component: {fileID: 7776914547958445092}
-  - component: {fileID: 5847037195933613269}
   - component: {fileID: 3124990549263377523}
   m_Layer: 0
   m_Name: AudioSystems_v2
@@ -137,22 +136,6 @@ MonoBehaviour:
     Volume: 0.4
     Pitch: 1
     spacialBlend: 0
---- !u!114 &5847037195933613269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5491161239177435304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b246e38d4334a245ade13deb6417913, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioPanel: {fileID: 277686733061227266}
-  _masterVolumeSlider: {fileID: 7979295795217425750}
-  _musicVolumeSlider: {fileID: 711052768384283186}
-  _sfxVolumeSlider: {fileID: 977008083793371449}
 --- !u!114 &3124990549263377523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,13 +516,32 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7633137831765713697, guid: bad4fee4a967593439b30298e1996743, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8042140741995875735}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4720324080583007897, guid: bad4fee4a967593439b30298e1996743, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2283122790411385656}
   m_SourcePrefab: {fileID: 100100000, guid: bad4fee4a967593439b30298e1996743, type: 3}
 --- !u!1 &277686733061227266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4720324080583007897, guid: bad4fee4a967593439b30298e1996743, type: 3}
   m_PrefabInstance: {fileID: 4781555209718160795}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2283122790411385656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277686733061227266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b246e38d4334a245ade13deb6417913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioPanel: {fileID: 277686733061227266}
+  _masterVolumeSlider: {fileID: 7979295795217425750}
+  _musicVolumeSlider: {fileID: 711052768384283186}
+  _sfxVolumeSlider: {fileID: 977008083793371449}
 --- !u!224 &3149464519858126522 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7633137831765713697, guid: bad4fee4a967593439b30298e1996743, type: 3}

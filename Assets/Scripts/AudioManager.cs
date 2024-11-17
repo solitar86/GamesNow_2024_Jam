@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
         AudioSource audioSource = (AudioSource)tempGameObject.AddComponent(typeof(AudioSource));
         audioSource.clip = soundToPlay.Clip;
         audioSource.outputAudioMixerGroup = soundToPlay.Mixergroup;
-        audioSource.spatialBlend = 0.75f;
+        audioSource.spatialBlend = 0.50f;
         audioSource.volume = soundToPlay.Volume;
         audioSource.Play();
         Destroy(tempGameObject,
