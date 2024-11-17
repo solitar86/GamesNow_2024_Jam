@@ -16,7 +16,7 @@ MonoBehaviour:
   ambientMode: 3
   ambientSkyColor: {r: 0.060166225, g: 0.023507565, b: 0.017974183, a: 1}
   ambientIntensity: 1
-  fog: 1
+  fog: 0
   fogMode: 3
   fogColor: {r: 0.26415092, g: 0.009137265, b: 0.024361948, a: 1}
   fogDensity: 0.132
