@@ -15,12 +15,12 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 0
-  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
-  m_FogMode: 1
+  m_FogColor: {r: 1, g: 1, b: 1, a: 1}
+  m_FogMode: 0
   m_FogDensity: 0
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.13488378, g: 0.61771774, b: 0.7798742, a: 1}
+  m_AmbientSkyColor: {r: 0.30809265, g: 0.29824272, b: 0.21944334, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -410,20 +410,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8748325916769382712, guid: 58f04fbea4018c0419e3d973bd1e80ec, type: 3}
       propertyPath: _darkDimensionScene.m_SceneName
-      value: Johannes_LevelBuilding_A backup
+      value: Johannes_LevelBuilding_B
       objectReference: {fileID: 0}
     - target: {fileID: 8748325916769382712, guid: 58f04fbea4018c0419e3d973bd1e80ec, type: 3}
       propertyPath: _darkDimensionScene.m_SceneAsset
       value: 
-      objectReference: {fileID: 102900000, guid: 633d55677ab99a344909b121742ffa8c, type: 3}
+      objectReference: {fileID: 102900000, guid: 45a7d560499248a4f865b42fe806362b, type: 3}
     - target: {fileID: 8748325916769382712, guid: 58f04fbea4018c0419e3d973bd1e80ec, type: 3}
       propertyPath: _lightDimensionScene.m_SceneName
-      value: Johannes_LevelBuilding_B
+      value: Johannes_LevelBuilding_A backup
       objectReference: {fileID: 0}
     - target: {fileID: 8748325916769382712, guid: 58f04fbea4018c0419e3d973bd1e80ec, type: 3}
       propertyPath: _lightDimensionScene.m_SceneAsset
       value: 
-      objectReference: {fileID: 102900000, guid: 45a7d560499248a4f865b42fe806362b, type: 3}
+      objectReference: {fileID: 102900000, guid: 633d55677ab99a344909b121742ffa8c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
