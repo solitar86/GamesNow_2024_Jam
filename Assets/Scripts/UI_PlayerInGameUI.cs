@@ -28,6 +28,7 @@ public class UI_PlayerInGameUI : MonoBehaviour
     }
 
     public void EnableHUD() {
+        print("Enabling HUD");
         HUD.SetActive(true);
     }
 }

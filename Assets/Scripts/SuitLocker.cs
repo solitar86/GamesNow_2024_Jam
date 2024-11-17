@@ -6,16 +6,16 @@ public class SuitLocker : MonoBehaviour, Iinteractable
 {
     [SerializeField] private float openAmount;
     private Vector3 closedPos;
-    [SerializeField] private AnimationCurve curve;
-    [SerializeField] private float transitionDuration;
+    //[SerializeField] private AnimationCurve curve;
+    //[SerializeField] private float transitionDuration;
     public bool opening = false;
     public bool used = false;
     float openYPos;
-    float lerp = 0;
+    //float lerp = 0;
     Collider glassCollider;
 
     public void Awake() {
-        curve = curve.length == 0 ? null : curve;
+        //curve = curve.length == 0 ? null : curve;
         closedPos = transform.position;
         openYPos = closedPos.y - openAmount;
         glassCollider = GetComponent<Collider>();

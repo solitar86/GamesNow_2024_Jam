@@ -38,6 +38,7 @@ public class Player_DimensionSwitcher : MonoBehaviour
     }
     public void EquippedSuit() {
         _suitOn = true;
+        _canSwitchDimensions = true;
         //play equip sound etc.
     }
     #region Update
