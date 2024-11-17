@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ReadyToJump
   m_EditorClassIdentifier: 
   dialoqueLine: Ready for Dimensional Jump.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: b1010704bb2a8664f9f70bd9feeadcbd, type: 3}
   _timeToShowOnScreen: 3

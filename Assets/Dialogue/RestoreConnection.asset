@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RestoreConnection
   m_EditorClassIdentifier: 
   dialoqueLine: To restore the connection, please put on your PORT Suit.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: 98af39a702083b94fb0918bf250f9745, type: 3}
   _timeToShowOnScreen: 5

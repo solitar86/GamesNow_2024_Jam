@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GetToWork
   m_EditorClassIdentifier: 
   dialoqueLine: Time to get to work.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: feb41066bfa9a8b44ae03e8fbdf3146d, type: 3}
   _timeToShowOnScreen: 3

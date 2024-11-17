@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Directions
   m_EditorClassIdentifier: 
   dialoqueLine: (WASD to move, look around with your mouse.)
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: 7a02699819a06cc49bc20238cd38f0f4, type: 3}
   _timeToShowOnScreen: 5

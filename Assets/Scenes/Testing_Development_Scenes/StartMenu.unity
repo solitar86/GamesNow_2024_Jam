@@ -688,26 +688,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1523579697841331727, guid: 41e959134402e324ea837b18d61ab122, type: 3}
+    - target: {fileID: 1086420423804395465, guid: 41e959134402e324ea837b18d61ab122, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2219641110060011097, guid: 41e959134402e324ea837b18d61ab122, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3330853098613698957, guid: 41e959134402e324ea837b18d61ab122, type: 3}
-      propertyPath: m_AnchorMax.y
+    - target: {fileID: 6220898939529751540, guid: 41e959134402e324ea837b18d61ab122, type: 3}
+      propertyPath: _startScene.m_SceneName
+      value: BootstrapScene_JohannesTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220898939529751540, guid: 41e959134402e324ea837b18d61ab122, type: 3}
+      propertyPath: _startScene.m_SceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: ea9a0f3467751c04b910a5b29ca05f9a, type: 3}
+    - target: {fileID: 7120129884865398747, guid: 41e959134402e324ea837b18d61ab122, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7324274896242735891, guid: 41e959134402e324ea837b18d61ab122, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1162051220}
-    - target: {fileID: 7419182340220893358, guid: 41e959134402e324ea837b18d61ab122, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7853752924463142523, guid: 41e959134402e324ea837b18d61ab122, type: 3}
       propertyPath: m_Name
       value: Canvas

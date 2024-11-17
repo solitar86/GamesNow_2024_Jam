@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 55f4e1385554b2d4c9543714793aacc1, type: 2}
     - target: {fileID: 919132149155446097, guid: ec2292a24d4e2a3458707f065c727b9b, type: 3}
       propertyPath: m_Name
-      value: Suit04 1
+      value: Suit04
       objectReference: {fileID: 0}
     - target: {fileID: 2718460024326248582, guid: ec2292a24d4e2a3458707f065c727b9b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PleaseLogin
   m_EditorClassIdentifier: 
   dialoqueLine: Please login at the Control Center to restore station systems.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: b7862510658b8624ba06c41aaa8e5777, type: 3}
   _timeToShowOnScreen: 4

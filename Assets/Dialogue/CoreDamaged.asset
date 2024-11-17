@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CoreDamaged
   m_EditorClassIdentifier: 
   dialoqueLine: An Energy Core has been damaged.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: d6a4d427ede902f4c9b85a8d60c281e8, type: 3}
   _timeToShowOnScreen: 3

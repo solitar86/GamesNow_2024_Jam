@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WarningDamage
   m_EditorClassIdentifier: 
   dialoqueLine: Warning! Station 4B has suffered damage.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: f31c725d4f4679e43b538608784f7f39, type: 3}
   _timeToShowOnScreen: 3

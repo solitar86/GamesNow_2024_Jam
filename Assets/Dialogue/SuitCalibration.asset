@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SuitCalibration
   m_EditorClassIdentifier: 
   dialoqueLine: Suit calibration complete.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: 67290e4d7e87fbd4f979e1e5413bbc9d, type: 3}
   _timeToShowOnScreen: 3

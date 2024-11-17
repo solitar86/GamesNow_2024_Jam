@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PowerRestored
   m_EditorClassIdentifier: 
   dialoqueLine: Generator stabilizing.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: 30f6cbfd5d73a6149bfe2472f764f25f, type: 3}
   _timeToShowOnScreen: 2

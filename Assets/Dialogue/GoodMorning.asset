@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GoodMorning
   m_EditorClassIdentifier: 
   dialoqueLine: Good morning, Employee 107.
-  _dialoqueAudio: {fileID: 0}
+  _dialoqueAudio: {fileID: 8300000, guid: 6aad515308b7c2d4ba6e1f38681de6a9, type: 3}
   _timeToShowOnScreen: 3
