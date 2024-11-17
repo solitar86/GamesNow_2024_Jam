@@ -22,10 +22,14 @@ public class PersistantObjects : MonoBehaviour
         _allItemDataSO = Resources.LoadAll<ItemDataSO>("ItemData");
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        GameState.ResetGameState();
     }
     private void Start()
     {
         SceneLoader.Instance.OnSceneIsActivated += OnSceneActivated;
+
+        Debug.Log(GameState.HasSuit);
     }
 
     private void OnSceneActivated(Dimension dimension)
@@ -189,5 +193,20 @@ public class PersistantObjects : MonoBehaviour
     public void RemoveItemFromDictionary(Item item)
     {
         currentItemsDictionary.Remove(item);
+    }
+
+    public class GameState
+    {
+        public static void ResetGameState()
+        {
+            HasSuit = false;
+        }
+
+        // DOES THE PLAYER HAVE THE SUIT.
+        public static bool HasSuit { get; private set; }
+        public static void SetPlayerHasSuit(bool hasSuit)
+        {
+            HasSuit = hasSuit;
+        }
     }
 }
