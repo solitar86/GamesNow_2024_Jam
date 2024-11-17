@@ -24,6 +24,7 @@ public class AudioSettings : MonoBehaviour
     void Start()
     {
         InitializeAudioSettings();
+        gameObject.SetActive(false);
     }
 
     public void InitializeAudioSettings()
