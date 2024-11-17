@@ -184,9 +184,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4467200227924218861, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
-      propertyPath: _emergencyDuration
-      value: 30
+    - target: {fileID: 46283968140233576, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 46283968140233576, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241464183679790175, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241464183679790175, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5981421385838072269, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
       propertyPath: m_LocalPosition.x
@@ -227,6 +239,30 @@ PrefabInstance:
     - target: {fileID: 5981421385838072269, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098725509024120082, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: _notChargedSuitChargeColor.b
+      value: 0.07986307
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098725509024120082, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: _notChargedSuitChargeColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098725509024120082, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: _notChargedSuitChargeColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098725509024120082, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: _notChargedSuitChargeColor_Dark.b
+      value: 0.7137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098725509024120082, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: _notChargedSuitChargeColor_Dark.g
+      value: 0.7529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098725509024120082, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
+      propertyPath: _notChargedSuitChargeColor_Dark.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6362048433069149920, guid: 8e486826c7aff6a48abe732e20519015, type: 3}
       propertyPath: m_Name
@@ -410,12 +446,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8748325916769382712, guid: 58f04fbea4018c0419e3d973bd1e80ec, type: 3}
       propertyPath: _lightDimensionScene.m_SceneName
-      value: Iiro_AudioRakennusSkene
+      value: Iiro_SceneChangeTest_Light
       objectReference: {fileID: 0}
     - target: {fileID: 8748325916769382712, guid: 58f04fbea4018c0419e3d973bd1e80ec, type: 3}
       propertyPath: _lightDimensionScene.m_SceneAsset
       value: 
-      objectReference: {fileID: 102900000, guid: a3d696d75e8682340af07cd8d3698c34, type: 3}
+      objectReference: {fileID: 102900000, guid: b037f53108dcd444b9bcc4873827b65f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -585,6 +621,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3002361581132257060, guid: 3d2481b4d4c432e41bc41c2ada2756f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173180449092943788, guid: 3d2481b4d4c432e41bc41c2ada2756f4, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
