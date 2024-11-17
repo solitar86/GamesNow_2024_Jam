@@ -27,6 +27,8 @@ public class PlayerInteractor : MonoBehaviour
 
     [SerializeField, ReadOnly(true)] Item _selectedItem;
     [SerializeField, ReadOnly(true)] Iinteractable _selectedInteractable;
+
+    private bool _interactionIsDisabled = false;
     public Item SelectedItem { get { return _selectedItem; } }
     public Iinteractable Interactable { get { return _selectedInteractable;} }
 
@@ -36,8 +38,28 @@ public class PlayerInteractor : MonoBehaviour
         _debugSphere.gameObject.SetActive(false);
     }
 
+    private void Start()
+    {
+        SceneLoader.Instance.OnStartDimensionLoad += OnStartDimensionLoad;
+        SceneLoader.Instance.OnDimensionLoaded += OnDimensionIsLoaded;
+    }
+
+    private void OnDimensionIsLoaded(Dimension dimension)
+    {
+        _interactionIsDisabled = false;
+    }
+
+    private void OnStartDimensionLoad(Dimension dimension)
+    {
+        DeselectCurrentItem();
+        DeSelectCurrentInteractable();
+        _interactionIsDisabled = true;
+    }
+
     private void Update()
     {
+        if (_interactionIsDisabled) return;
+
         _interactionRay = mainCamera.ScreenPointToRay(_crosshair.position);
         if (Physics.Raycast(_interactionRay, out RaycastHit hitInfo, _interactionDistance, _interactWithLayers))
         {

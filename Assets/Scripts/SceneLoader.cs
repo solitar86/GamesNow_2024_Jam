@@ -80,6 +80,7 @@ public class SceneLoader: MonoBehaviour
 
     public Dimension GetDimensionFromScene(SceneField sceneField)
     {
+
         if(sceneField == _lightDimensionScene) return Dimension.Light;
         if(sceneField == _darkDimensionScene) return Dimension.Dark;
 
