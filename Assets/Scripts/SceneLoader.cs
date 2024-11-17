@@ -78,13 +78,22 @@ public class SceneLoader: MonoBehaviour
 
     }
 
-    public Dimension GetDimensionFromScene(SceneField scene)
+    public Dimension GetDimensionFromScene(SceneField sceneField)
     {
-        if(scene == _lightDimensionScene) return Dimension.Light;
-        if(scene == _darkDimensionScene) return Dimension.Dark;
+        if(sceneField == _lightDimensionScene) return Dimension.Light;
+        if(sceneField == _darkDimensionScene) return Dimension.Dark;
 
         Debug.Log("<color=#FF0000> Invalid Dimension From Scene. Returning Dimension.Light </color>");
         return Dimension.Light;
+    }
+
+    public Scene GetSceneFromDimension(Dimension dimensionToCheck)
+    {
+        if (dimensionToCheck == Dimension.Light) return SceneManager.GetSceneByName(_lightDimensionScene.SceneName);
+        if(dimensionToCheck == Dimension.Dark) return SceneManager.GetSceneByName(_darkDimensionScene.SceneName);
+
+        Debug.Log("Something went wrong with dimension loading");
+        return SceneManager.GetSceneByName(_lightDimensionScene.SceneName);
     }
 
     public Scene GetCurrentDimensionScene()
@@ -105,6 +114,14 @@ public class SceneLoader: MonoBehaviour
     private bool SceneIsLoaded(SceneField sceneToCheck)
     {
         return SceneManager.GetSceneByName(sceneToCheck.SceneName).isLoaded;
+    }
+
+    public bool IsDimensionSceneLoaded(Dimension dimensionToCheck)
+    {
+       Debug.Log(dimensionToCheck.ToString() + " is already loaded");
+        var scene = GetSceneFromDimension(dimensionToCheck);
+        return scene.isLoaded;
+
     }
 
     public void LoadLightDimensionInstant()

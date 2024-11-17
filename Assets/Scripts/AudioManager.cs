@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
@@ -10,7 +11,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource _darkDimensionAmbianceSource, _lightDimensionAmbianceSource;
     [Space(15)]
-    [SerializeField] AudioMixerGroup _sfxGroup;
+    [SerializeField] AudioMixerGroup _defaultMixerGroup;
+    [Space(15)]
+    [SerializeField] private Sound _errorBeepSound;
 
     private void Awake()
     {
@@ -64,7 +67,7 @@ public class AudioManager : MonoBehaviour
         soundToPlay.Pitch = 1;
         soundToPlay.Volume = volume;
         soundToPlay.Clip = clipToPlay;
-        soundToPlay.Mixergroup = instance._sfxGroup;
+        soundToPlay.Mixergroup = instance._defaultMixerGroup;
 
         PlaySoundAtPoint(sender, soundToPlay, point);
     }
@@ -79,6 +82,11 @@ public class AudioManager : MonoBehaviour
 
         return randomClip;
     }
+
+    public static void PlayErrorBeep(Transform senderTransform)
+    {
+        PlaySoundAtPoint(senderTransform, instance._errorBeepSound, senderTransform.position);
+    }
 }
 
 [System.Serializable]
@@ -88,5 +96,6 @@ public class Sound
     [SerializeField] public AudioMixerGroup Mixergroup;
     [SerializeField, Range(0f,1f)] public float Volume = 1f;
     [SerializeField, Range(-3, 3f)] public float Pitch = 1;
+    [SerializeField] float spacialBlend = 0;
     
 }
