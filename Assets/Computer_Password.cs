@@ -33,6 +33,17 @@ public class Computer_Password : MonoBehaviour, Iinteractable
         }
         if(_keyboardSource == null) _keyboardSource = GetComponent<AudioSource>();
     }
+
+    private void Start()
+    {
+        SceneLoader.Instance.OnDimensionReadyToActivate += OnSceneReadyToLoad;
+    }
+
+    private void OnSceneReadyToLoad(Dimension dimension)
+    {
+        ExitMenu();
+    }
+
     void Iinteractable.Interact(Transform playerTransform)
     {
         _OnComputerInteractedWith?.Invoke();
@@ -78,5 +89,10 @@ public class Computer_Password : MonoBehaviour, Iinteractable
             _playerTransform?.gameObject.SetActive(true);
             _playerTransform.GetComponentInChildren<FirstPersonController>().enabled = true;
         }
+    }
+
+    private void OnDisable()
+    {
+        SceneLoader.Instance.OnDimensionReadyToActivate -= OnSceneReadyToLoad;
     }
 }
