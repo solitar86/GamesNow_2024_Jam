@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lightDimensionScene:
-    m_SceneAsset: {fileID: 102900000, guid: 26d51bc9b2aded04b8a1f8411f8768d0, type: 3}
-    m_SceneName: Johannes_LevelBuilding_A
+    m_SceneAsset: {fileID: 102900000, guid: 633d55677ab99a344909b121742ffa8c, type: 3}
+    m_SceneName: Johannes_LevelBuilding_A backup
   _darkDimensionScene:
     m_SceneAsset: {fileID: 102900000, guid: 45a7d560499248a4f865b42fe806362b, type: 3}
     m_SceneName: Johannes_LevelBuilding_B
