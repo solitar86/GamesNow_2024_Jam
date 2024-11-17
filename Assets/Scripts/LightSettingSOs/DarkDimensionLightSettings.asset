@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skybox: {fileID: 2100000, guid: 9e07b5f1ebeb2764ea80a163086f4ba7, type: 2}
   ambientMode: 3
-  ambientSkyColor: {r: 0.36477977, g: 0.14252321, b: 0.10897506, a: 1}
+  ambientSkyColor: {r: 0.060166225, g: 0.023507565, b: 0.017974183, a: 1}
   ambientIntensity: 1
   fog: 1
   fogMode: 3
