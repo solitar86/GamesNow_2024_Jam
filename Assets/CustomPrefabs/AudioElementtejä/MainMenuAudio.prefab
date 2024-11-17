@@ -142,4 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9b898f70368a346adbb0d64f54bfae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttons: []
+  _audioSource: {fileID: 0}
+  _fadeOutDuration: 3

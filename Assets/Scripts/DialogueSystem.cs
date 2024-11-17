@@ -68,7 +68,7 @@ public class DialoqueSystem : MonoBehaviour
             // TODO: Add support to play audio:
             if (currentDialogue._dialoqueAudio != null)
             {
-                AudioSource.PlayClipAtPoint(currentDialogue._dialoqueAudio, transform.position);
+                AudioManager.PlayClipAtPoint(this, currentDialogue._dialoqueAudio, transform.position, 1f);
             }
             yield return StartCoroutine(TypeOutDialogueText(dialoqueToShow));
 
