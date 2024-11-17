@@ -9,16 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Testing_Development_Scenes/StartMenu.unity
     guid: c9859c8a692664c44aba5d8291b8ab3f
   - enabled: 1
-    path: Assets/Scenes/Testing_Development_Scenes/BootstrapScene_IiroTest.unity
+    path: "Assets/Scenes/Testing_Development_Scenes/IironSkenej\xE4/BootstrapScene_IiroTest.unity"
     guid: bc1b961816c3c584a89cc660f1def533
   - enabled: 1
     path: Assets/Scenes/Testing_Development_Scenes/BootstrapScene_GameScene.unity
     guid: 0caf37eefd409bc4f9d295069492e7be
   - enabled: 1
-    path: Assets/Scenes/Testing_Development_Scenes/Iiro_SceneChangeTest_Dark_.unity
+    path: "Assets/Scenes/Testing_Development_Scenes/IironSkenej\xE4/Iiro_SceneChangeTest_Dark_.unity"
     guid: 724e4b4415d94d44cb6060e11c823704
   - enabled: 1
-    path: Assets/Scenes/Testing_Development_Scenes/Iiro_SceneChangeTest_Light.unity
+    path: "Assets/Scenes/Testing_Development_Scenes/IironSkenej\xE4/Iiro_SceneChangeTest_Light.unity"
     guid: b037f53108dcd444b9bcc4873827b65f
   - enabled: 1
     path: Assets/Scenes/Testing_Development_Scenes/Johannes_LevelBuilding_A.unity
